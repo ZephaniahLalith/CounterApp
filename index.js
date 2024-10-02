@@ -1,17 +1,29 @@
-import React from 'react';
-import ReactDOM from 'react-dom/client';
-import './index.css';
-import App from './App';
-import reportWebVitals from './reportWebVitals';
+import {Component} from "react"
+import "./index.css"
+class Counter extends Component{
+    state={count:0}
+    onIncrement=()=>{
+        this.setState(prevState=>{
+          return {count:prevState.count+1}
+        })
+      }
+    onDecrement=()=>{
+        this.setState(prevState=>{
+            return {count:prevState.count-1}
+          })
+    }
+    render(){
+        const {count}=this.state
+       return <div className="container">
+       <h1 className="title"> Counter </h1>
+       <p class="countxt">{count}</p>
+       <div className="buttons">
+         <button onClick={this.onIncrement}>Increase</button>
+         <button onClick={this.onDecrement}
+         >Decrease</button>
+       </div>
+     </div>
+    }
+}
 
-const root = ReactDOM.createRoot(document.getElementById('root'));
-root.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>
-);
-
-// If you want to start measuring performance in your app, pass a function
-// to log results (for example: reportWebVitals(console.log))
-// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
-reportWebVitals();
+export  default Counter
